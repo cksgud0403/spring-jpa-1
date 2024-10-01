@@ -73,16 +73,7 @@ public class ItemController {
     public String updateItem(@PathVariable("itemId") Long itemId, @ModelAttribute("form") BookForm form) {
 
 
-        Book book = new Book();
-
-        book.setId(itemId);
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setAuthor(form.getAuthor());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setIsbn(form.getIsbn());
-
-        itemService.saveItem(book);
+        itemService.updateItem(form.getId(), form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
     }
